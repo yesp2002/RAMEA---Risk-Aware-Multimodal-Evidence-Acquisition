@@ -1,0 +1,18 @@
+[project]
+name = "ramea-prototype"
+version = "0.1.0"
+description = "Offline-first prototype for risk-aware multimodal evidence acquisition"
+requires-python = ">=3.11"
+dependencies = [
+  "boto3>=1.35.0,<2.0.0",
+]
+
+[project.scripts]
+ramea = "scripts.run_prototype:main"
+
+[tool.pyright]
+include = ["src", "scripts"]
+pythonVersion = "3.11"
+
+[tool.ruff]
+line-length = 100

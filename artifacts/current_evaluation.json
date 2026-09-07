@@ -1,0 +1,4995 @@
+{
+  "config": {
+    "mode": "offline",
+    "aws_profile": "aidev",
+    "aws_region": "us-east-1",
+    "text_model_id": "openai.gpt-oss-120b-1:0",
+    "vision_model_id": "amazon.nova-lite-v1:0",
+    "embedding_model_id": "amazon.titan-embed-text-v2:0",
+    "max_steps": 4,
+    "stop_threshold": 0.55,
+    "alpha_conflict": 0.35,
+    "beta_risk": 0.45,
+    "lambda_cost": 0.1,
+    "confidence_threshold": 0.7
+  },
+  "summaries": [
+    {
+      "policy": "fixed",
+      "encounters": 5,
+      "scenario_counts": {
+        "standard_high_risk": 1,
+        "standard_moderate_risk": 1,
+        "high_risk_conflict": 1,
+        "high_risk_missing_image": 1,
+        "low_risk_safe_stop": 1
+      },
+      "diagnostic_performance": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "high_risk_sensitivity": 1.0,
+        "high_risk_auroc_proxy": 1.0
+      },
+      "calibration": {
+        "ece": 0.164,
+        "brier_score": 0.0346,
+        "reliability": [
+          {
+            "bin": 6,
+            "count": 1,
+            "confidence": 0.66,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 8,
+            "count": 4,
+            "confidence": 0.88,
+            "accuracy": 1.0
+          }
+        ]
+      },
+      "acquisition": {
+        "total_retrievals": 12,
+        "mean_retrievals": 2.4,
+        "mean_modalities_retrieved": 2.4,
+        "expected_modality_rate": 0.6,
+        "information_efficiency_proxy": 0.0167
+      },
+      "decision_control": {
+        "final_actions": {
+          "ACT": 5
+        },
+        "expected_action_rate": 0.4,
+        "premature_decision_rate": 0.8,
+        "unsafe_decision_rate_proxy": 0.8,
+        "risk_weighted_unsafe_rate_proxy": 0.7,
+        "final_action_counts": {
+          "ACT": 5
+        }
+      },
+      "conflict_detection": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "severity_accuracy": 1.0,
+        "high_conflict_escalation_rate": 0.0,
+        "low_conflict_escalation_rate": 0.0
+      },
+      "missing_modality": {
+        "cases": 1,
+        "recognition_rate_proxy": 0.0
+      },
+      "risk_weighted_information_regret": {
+        "total_proxy": 3.5,
+        "mean_proxy": 0.7
+      },
+      "resource_usage": {
+        "tool_calls": 12,
+        "modalities_retrieved": 12,
+        "tokens_consumed": null,
+        "latency_seconds": null,
+        "estimated_api_cost_usd": null,
+        "llm_resource_accounting_available": false
+      },
+      "scenario_breakdown": {
+        "standard_high_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "standard_moderate_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "high_risk_conflict": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "high_risk_missing_image": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 2,
+          "escalations": 0
+        },
+        "low_risk_safe_stop": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 1,
+          "escalations": 0
+        }
+      },
+      "metric_status": "offline synthetic proxy metrics; not clinical validation"
+    },
+    {
+      "policy": "confidence",
+      "encounters": 5,
+      "scenario_counts": {
+        "standard_high_risk": 1,
+        "standard_moderate_risk": 1,
+        "high_risk_conflict": 1,
+        "high_risk_missing_image": 1,
+        "low_risk_safe_stop": 1
+      },
+      "diagnostic_performance": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "high_risk_sensitivity": 1.0,
+        "high_risk_auroc_proxy": 1.0
+      },
+      "calibration": {
+        "ece": 0.164,
+        "brier_score": 0.0346,
+        "reliability": [
+          {
+            "bin": 6,
+            "count": 1,
+            "confidence": 0.66,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 8,
+            "count": 4,
+            "confidence": 0.88,
+            "accuracy": 1.0
+          }
+        ]
+      },
+      "acquisition": {
+        "total_retrievals": 11,
+        "mean_retrievals": 2.2,
+        "mean_modalities_retrieved": 2.2,
+        "expected_modality_rate": 0.6,
+        "information_efficiency_proxy": 0.0182
+      },
+      "decision_control": {
+        "final_actions": {
+          "ACT": 5
+        },
+        "expected_action_rate": 0.4,
+        "premature_decision_rate": 0.8,
+        "unsafe_decision_rate_proxy": 0.8,
+        "risk_weighted_unsafe_rate_proxy": 0.7,
+        "final_action_counts": {
+          "ACT": 5
+        }
+      },
+      "conflict_detection": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "severity_accuracy": 1.0,
+        "high_conflict_escalation_rate": 0.0,
+        "low_conflict_escalation_rate": 0.0
+      },
+      "missing_modality": {
+        "cases": 1,
+        "recognition_rate_proxy": 0.0
+      },
+      "risk_weighted_information_regret": {
+        "total_proxy": 3.5,
+        "mean_proxy": 0.7
+      },
+      "resource_usage": {
+        "tool_calls": 11,
+        "modalities_retrieved": 11,
+        "tokens_consumed": null,
+        "latency_seconds": null,
+        "estimated_api_cost_usd": null,
+        "llm_resource_accounting_available": false
+      },
+      "scenario_breakdown": {
+        "standard_high_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "standard_moderate_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "high_risk_conflict": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "high_risk_missing_image": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 2,
+          "escalations": 0
+        },
+        "low_risk_safe_stop": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 0,
+          "escalations": 0
+        }
+      },
+      "metric_status": "offline synthetic proxy metrics; not clinical validation"
+    },
+    {
+      "policy": "ramea",
+      "encounters": 5,
+      "scenario_counts": {
+        "standard_high_risk": 1,
+        "standard_moderate_risk": 1,
+        "high_risk_conflict": 1,
+        "high_risk_missing_image": 1,
+        "low_risk_safe_stop": 1
+      },
+      "diagnostic_performance": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "high_risk_sensitivity": 1.0,
+        "high_risk_auroc_proxy": 1.0
+      },
+      "calibration": {
+        "ece": 0.164,
+        "brier_score": 0.0346,
+        "reliability": [
+          {
+            "bin": 6,
+            "count": 1,
+            "confidence": 0.66,
+            "accuracy": 1.0
+          },
+          {
+            "bin": 8,
+            "count": 4,
+            "confidence": 0.88,
+            "accuracy": 1.0
+          }
+        ]
+      },
+      "acquisition": {
+        "total_retrievals": 11,
+        "mean_retrievals": 2.2,
+        "mean_modalities_retrieved": 2.2,
+        "expected_modality_rate": 0.6,
+        "information_efficiency_proxy": 0.0727
+      },
+      "decision_control": {
+        "final_actions": {
+          "ESCALATE": 3,
+          "ACT": 2
+        },
+        "expected_action_rate": 1.0,
+        "premature_decision_rate": 0.2,
+        "unsafe_decision_rate_proxy": 0.2,
+        "risk_weighted_unsafe_rate_proxy": 0.1,
+        "final_action_counts": {
+          "ESCALATE": 3,
+          "ACT": 2
+        }
+      },
+      "conflict_detection": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "severity_accuracy": 1.0,
+        "high_conflict_escalation_rate": 1.0,
+        "low_conflict_escalation_rate": 0.5
+      },
+      "missing_modality": {
+        "cases": 1,
+        "recognition_rate_proxy": 1.0
+      },
+      "risk_weighted_information_regret": {
+        "total_proxy": 0.5,
+        "mean_proxy": 0.1
+      },
+      "resource_usage": {
+        "tool_calls": 11,
+        "modalities_retrieved": 11,
+        "tokens_consumed": null,
+        "latency_seconds": null,
+        "estimated_api_cost_usd": null,
+        "llm_resource_accounting_available": false
+      },
+      "scenario_breakdown": {
+        "standard_high_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ESCALATE": 1
+          },
+          "retrievals": 3,
+          "escalations": 1
+        },
+        "standard_moderate_risk": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 3,
+          "escalations": 0
+        },
+        "high_risk_conflict": {
+          "encounters": 1,
+          "final_actions": {
+            "ESCALATE": 1
+          },
+          "retrievals": 3,
+          "escalations": 1
+        },
+        "high_risk_missing_image": {
+          "encounters": 1,
+          "final_actions": {
+            "ESCALATE": 1
+          },
+          "retrievals": 2,
+          "escalations": 1
+        },
+        "low_risk_safe_stop": {
+          "encounters": 1,
+          "final_actions": {
+            "ACT": 1
+          },
+          "retrievals": 0,
+          "escalations": 0
+        }
+      },
+      "metric_status": "offline synthetic proxy metrics; not clinical validation"
+    }
+  ],
+  "paired_comparisons": {
+    "fixed_vs_confidence": {
+      "interpretation": "right policy minus left policy on identical encounters",
+      "accuracy": {
+        "bootstrap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": 0.0,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "retrievals": {
+        "bootstrap": {
+          "estimate": -0.2,
+          "lower": -0.6,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": -0.4472,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "premature_decision": {
+        "bootstrap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": 0.0,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "paired_encounters": 5
+    },
+    "fixed_vs_ramea": {
+      "interpretation": "right policy minus left policy on identical encounters",
+      "accuracy": {
+        "bootstrap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": 0.0,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "retrievals": {
+        "bootstrap": {
+          "estimate": -0.2,
+          "lower": -0.6,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": -0.4472,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "premature_decision": {
+        "bootstrap": {
+          "estimate": -0.6,
+          "lower": -1.0,
+          "upper": -0.2
+        },
+        "paired_permutation_p_value": 0.2619,
+        "paired_effect_size": -1.0954,
+        "benjamini_hochberg_adjusted_p_value": 0.3929
+      },
+      "paired_encounters": 5
+    },
+    "confidence_vs_ramea": {
+      "interpretation": "right policy minus left policy on identical encounters",
+      "accuracy": {
+        "bootstrap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": 0.0,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "retrievals": {
+        "bootstrap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "paired_permutation_p_value": 1.0,
+        "paired_effect_size": 0.0,
+        "benjamini_hochberg_adjusted_p_value": 1.0
+      },
+      "premature_decision": {
+        "bootstrap": {
+          "estimate": -0.6,
+          "lower": -1.0,
+          "upper": -0.2
+        },
+        "paired_permutation_p_value": 0.2619,
+        "paired_effect_size": -1.0954,
+        "benjamini_hochberg_adjusted_p_value": 0.3929
+      },
+      "paired_encounters": 5
+    }
+  },
+  "statistical_status": "deterministic synthetic fixture; bootstrap intervals are illustrative only",
+  "trajectories": {
+    "fixed": [
+      {
+        "encounter_id": "synthetic-001",
+        "policy": "fixed",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.558797",
+            "state": {
+              "demographics": {
+                "age": 67,
+                "sex": "F"
+              },
+              "chief_complaint": "shortness of breath",
+              "vitals": {
+                "temperature_c": 37.9,
+                "heart_rate": 112,
+                "spo2": 91
+              }
+            },
+            "diagnosis_ground_truth": "heart_failure"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.558897",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:20:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.558933",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "bnp": 2400,
+                  "wbc": 9.2
+                },
+                "available_at": "2025-01-01T08:20:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559001",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:40:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559029",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "bilateral interstitial opacities"
+                },
+                "available_at": "2025-01-01T08:40:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559097",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559119",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "pulmonary vascular congestion"
+                },
+                "available_at": "2025-01-01T08:45:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559199",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.559262",
+            "action": "ACT",
+            "diagnosis": "heart_failure",
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": "ACT",
+              "final_diagnosis": "heart_failure"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-002",
+        "policy": "fixed",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.559278",
+            "state": {
+              "demographics": {
+                "age": 42,
+                "sex": "M"
+              },
+              "chief_complaint": "fever and cough",
+              "vitals": {
+                "temperature_c": 39.1,
+                "heart_rate": 104,
+                "spo2": 96
+              }
+            },
+            "diagnosis_ground_truth": "pneumonia"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559316",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:18:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559337",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "wbc": 15.4,
+                  "crp": 12.0
+                },
+                "available_at": "2025-01-01T08:18:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559388",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "text",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:25:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559408",
+            "modality": "text",
+            "evidence": [
+              {
+                "modality": "text",
+                "content": {
+                  "note": "productive cough for three days"
+                },
+                "available_at": "2025-01-01T08:25:00+00:00",
+                "provenance": "synthetic-note",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559473",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559493",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "right lower lobe consolidation"
+                },
+                "available_at": "2025-01-01T08:50:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559574",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.559637",
+            "action": "ACT",
+            "diagnosis": "pneumonia",
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": "ACT",
+              "final_diagnosis": "pneumonia"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-003",
+        "policy": "fixed",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.559648",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559745",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559769",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559819",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559842",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.559905",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.559925",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "equivocal basilar opacity"
+                },
+                "available_at": "2025-01-01T08:38:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560002",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.560064",
+            "action": "ACT",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ACT",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-004",
+        "policy": "fixed",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.560074",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560108",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560127",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560174",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560193",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560253",
+            "step": 2,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.560302",
+            "action": "ACT",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ACT",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-005",
+        "policy": "fixed",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.560312",
+            "state": {
+              "demographics": {
+                "age": 29,
+                "sex": "F"
+              },
+              "chief_complaint": "mild sore throat",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 76,
+                "spo2": 99
+              },
+              "clinical_signal": "normal oxygen"
+            },
+            "diagnosis_ground_truth": "viral_uri"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560345",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "text",
+            "score": 1.0,
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "text"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560363",
+            "modality": "text",
+            "evidence": [
+              {
+                "modality": "text",
+                "content": {
+                  "note": "self-limited upper respiratory symptoms"
+                },
+                "available_at": "2025-01-01T08:30:00+00:00",
+                "provenance": "synthetic-note",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560409",
+            "step": 1,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "self-limited upper respiratory symptoms"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "text"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.560445",
+            "action": "ACT",
+            "diagnosis": "viral_uri",
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "self-limited upper respiratory symptoms"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "text"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": "ACT",
+              "final_diagnosis": "viral_uri"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": [
+      {
+        "encounter_id": "synthetic-001",
+        "policy": "confidence",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.560458",
+            "state": {
+              "demographics": {
+                "age": 67,
+                "sex": "F"
+              },
+              "chief_complaint": "shortness of breath",
+              "vitals": {
+                "temperature_c": 37.9,
+                "heart_rate": 112,
+                "spo2": 91
+              }
+            },
+            "diagnosis_ground_truth": "heart_failure"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560498",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.22,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:20:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560519",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "bnp": 2400,
+                  "wbc": 9.2
+                },
+                "available_at": "2025-01-01T08:20:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560571",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 0.44,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:40:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560593",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "bilateral interstitial opacities"
+                },
+                "available_at": "2025-01-01T08:40:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560657",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 0.66,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560676",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "pulmonary vascular congestion"
+                },
+                "available_at": "2025-01-01T08:45:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560752",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.88,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.560814",
+            "action": "ACT",
+            "diagnosis": "heart_failure",
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": "ACT",
+              "final_diagnosis": "heart_failure"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-002",
+        "policy": "confidence",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.560823",
+            "state": {
+              "demographics": {
+                "age": 42,
+                "sex": "M"
+              },
+              "chief_complaint": "fever and cough",
+              "vitals": {
+                "temperature_c": 39.1,
+                "heart_rate": 104,
+                "spo2": 96
+              }
+            },
+            "diagnosis_ground_truth": "pneumonia"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560868",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.22,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:18:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560888",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "wbc": 15.4,
+                  "crp": 12.0
+                },
+                "available_at": "2025-01-01T08:18:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.560937",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "text",
+            "score": 0.44,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:25:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.560956",
+            "modality": "text",
+            "evidence": [
+              {
+                "modality": "text",
+                "content": {
+                  "note": "productive cough for three days"
+                },
+                "available_at": "2025-01-01T08:25:00+00:00",
+                "provenance": "synthetic-note",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561020",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 0.66,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561040",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "right lower lobe consolidation"
+                },
+                "available_at": "2025-01-01T08:50:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561117",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.88,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.561179",
+            "action": "ACT",
+            "diagnosis": "pneumonia",
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": "ACT",
+              "final_diagnosis": "pneumonia"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-003",
+        "policy": "confidence",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.561188",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561221",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.22,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561240",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561290",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 0.44,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561310",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561373",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 0.66,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561393",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "equivocal basilar opacity"
+                },
+                "available_at": "2025-01-01T08:38:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561468",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.88,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.561549",
+            "action": "ACT",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ACT",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-004",
+        "policy": "confidence",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.561558",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561590",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.22,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561609",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561655",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 0.44,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561673",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561733",
+            "step": 2,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.66,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.561781",
+            "action": "ACT",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ACT",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-005",
+        "policy": "confidence",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.561789",
+            "state": {
+              "demographics": {
+                "age": 29,
+                "sex": "F"
+              },
+              "chief_complaint": "mild sore throat",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 76,
+                "spo2": 99
+              },
+              "clinical_signal": "normal oxygen"
+            },
+            "diagnosis_ground_truth": "viral_uri"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561821",
+            "step": 0,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.88,
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.561843",
+            "action": "ACT",
+            "diagnosis": "viral_uri",
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": "ACT",
+              "final_diagnosis": "viral_uri"
+            }
+          }
+        ]
+      }
+    ],
+    "ramea": [
+      {
+        "encounter_id": "synthetic-001",
+        "policy": "ramea",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.561853",
+            "state": {
+              "demographics": {
+                "age": 67,
+                "sex": "F"
+              },
+              "chief_complaint": "shortness of breath",
+              "vitals": {
+                "temperature_c": 37.9,
+                "heart_rate": 112,
+                "spo2": 91
+              }
+            },
+            "diagnosis_ground_truth": "heart_failure"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561890",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.79,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:20:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561913",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "bnp": 2400,
+                  "wbc": 9.2
+                },
+                "available_at": "2025-01-01T08:20:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.561965",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 0.9625,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:40:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.561985",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "bilateral interstitial opacities"
+                },
+                "available_at": "2025-01-01T08:40:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562052",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0025,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562072",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "pulmonary vascular congestion"
+                },
+                "available_at": "2025-01-01T08:45:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562156",
+            "step": 3,
+            "action": "ESCALATE",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.562217",
+            "action": "ESCALATE",
+            "diagnosis": "heart_failure",
+            "state": {
+              "encounter_id": "synthetic-001",
+              "now": "2025-01-01T08:45:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 67,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "shortness of breath",
+                    "vitals": {
+                      "temperature_c": 37.9,
+                      "heart_rate": 112,
+                      "spo2": 91
+                    }
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "bnp": 2400,
+                    "wbc": 9.2
+                  },
+                  "available_at": "2025-01-01T08:20:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "bilateral interstitial opacities"
+                  },
+                  "available_at": "2025-01-01T08:40:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "pulmonary vascular congestion"
+                  },
+                  "available_at": "2025-01-01T08:45:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "image",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.85,
+              "hypothesis": "heart_failure",
+              "final_action": "ESCALATE",
+              "final_diagnosis": "heart_failure"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-002",
+        "policy": "ramea",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.562228",
+            "state": {
+              "demographics": {
+                "age": 42,
+                "sex": "M"
+              },
+              "chief_complaint": "fever and cough",
+              "vitals": {
+                "temperature_c": 39.1,
+                "heart_rate": 104,
+                "spo2": 96
+              }
+            },
+            "diagnosis_ground_truth": "pneumonia"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562263",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.79,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:18:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562285",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "wbc": 15.4,
+                  "crp": 12.0
+                },
+                "available_at": "2025-01-01T08:18:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562336",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "text",
+            "score": 0.5975,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:25:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562356",
+            "modality": "text",
+            "evidence": [
+              {
+                "modality": "text",
+                "content": {
+                  "note": "productive cough for three days"
+                },
+                "available_at": "2025-01-01T08:25:00+00:00",
+                "provenance": "synthetic-note",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562420",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 0.8675,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562439",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "right lower lobe consolidation"
+                },
+                "available_at": "2025-01-01T08:50:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562515",
+            "step": 3,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.562576",
+            "action": "ACT",
+            "diagnosis": "pneumonia",
+            "state": {
+              "encounter_id": "synthetic-002",
+              "now": "2025-01-01T08:50:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 42,
+                      "sex": "M"
+                    },
+                    "chief_complaint": "fever and cough",
+                    "vitals": {
+                      "temperature_c": 39.1,
+                      "heart_rate": 104,
+                      "spo2": 96
+                    }
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "wbc": 15.4,
+                    "crp": 12.0
+                  },
+                  "available_at": "2025-01-01T08:18:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "text",
+                  "content": {
+                    "note": "productive cough for three days"
+                  },
+                  "available_at": "2025-01-01T08:25:00+00:00",
+                  "provenance": "synthetic-note",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "right lower lobe consolidation"
+                  },
+                  "available_at": "2025-01-01T08:50:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "text",
+                "radiology"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.55,
+              "hypothesis": "pneumonia",
+              "final_action": "ACT",
+              "final_diagnosis": "pneumonia"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-003",
+        "policy": "ramea",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.562585",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562620",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.79,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562639",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562696",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0475,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562715",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562777",
+            "step": 2,
+            "action": "RETRIEVE",
+            "modality": "image",
+            "score": 1.0075,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562796",
+            "modality": "image",
+            "evidence": [
+              {
+                "modality": "image",
+                "content": {
+                  "finding": "equivocal basilar opacity"
+                },
+                "available_at": "2025-01-01T08:38:00+00:00",
+                "provenance": "synthetic-cxr",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562873",
+            "step": 3,
+            "action": "ESCALATE",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.562934",
+            "action": "ESCALATE",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-003",
+              "now": "2025-01-01T08:38:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "image",
+                  "content": {
+                    "finding": "equivocal basilar opacity"
+                  },
+                  "available_at": "2025-01-01T08:38:00+00:00",
+                  "provenance": "synthetic-cxr",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology",
+                "image"
+              ],
+              "uncertainty": 0.12,
+              "conflict": 0.65,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ESCALATE",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-004",
+        "policy": "ramea",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.562943",
+            "state": {
+              "demographics": {
+                "age": 76,
+                "sex": "F"
+              },
+              "chief_complaint": "acute dyspnea",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 118,
+                "spo2": 88
+              }
+            },
+            "diagnosis_ground_truth": "pulmonary_embolism"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.562976",
+            "step": 0,
+            "action": "RETRIEVE",
+            "modality": "labs",
+            "score": 0.79,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:15:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.78,
+              "conflict": 0.0,
+              "risk": 0.6,
+              "hypothesis": "undifferentiated_dyspnea",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.562995",
+            "modality": "labs",
+            "evidence": [
+              {
+                "modality": "labs",
+                "content": {
+                  "d_dimer": 2.8
+                },
+                "available_at": "2025-01-01T08:15:00+00:00",
+                "provenance": "synthetic-labs",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.563041",
+            "step": 1,
+            "action": "RETRIEVE",
+            "modality": "radiology",
+            "score": 1.0475,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.56,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "tool_result",
+            "at": "2026-09-07T11:59:17.563059",
+            "modality": "radiology",
+            "evidence": [
+              {
+                "modality": "radiology",
+                "content": {
+                  "impression": "no focal consolidation"
+                },
+                "available_at": "2025-01-01T08:35:00+00:00",
+                "provenance": "synthetic-report",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.563118",
+            "step": 2,
+            "action": "ESCALATE",
+            "modality": null,
+            "score": 0.0,
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.563171",
+            "action": "ESCALATE",
+            "diagnosis": "pulmonary_embolism",
+            "state": {
+              "encounter_id": "synthetic-004",
+              "now": "2025-01-01T08:35:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 76,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "acute dyspnea",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 118,
+                      "spo2": 88
+                    }
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "labs",
+                  "content": {
+                    "d_dimer": 2.8
+                  },
+                  "available_at": "2025-01-01T08:15:00+00:00",
+                  "provenance": "synthetic-labs",
+                  "confidence": 1.0
+                },
+                {
+                  "modality": "radiology",
+                  "content": {
+                    "impression": "no focal consolidation"
+                  },
+                  "available_at": "2025-01-01T08:35:00+00:00",
+                  "provenance": "synthetic-report",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [
+                "labs",
+                "radiology"
+              ],
+              "uncertainty": 0.33999999999999997,
+              "conflict": 0.0,
+              "risk": 0.95,
+              "hypothesis": "pulmonary_embolism",
+              "final_action": "ESCALATE",
+              "final_diagnosis": "pulmonary_embolism"
+            }
+          }
+        ]
+      },
+      {
+        "encounter_id": "synthetic-005",
+        "policy": "ramea",
+        "events": [
+          {
+            "event": "initial_state",
+            "at": "2026-09-07T11:59:17.563180",
+            "state": {
+              "demographics": {
+                "age": 29,
+                "sex": "F"
+              },
+              "chief_complaint": "mild sore throat",
+              "vitals": {
+                "temperature_c": 36.8,
+                "heart_rate": 76,
+                "spo2": 99
+              },
+              "clinical_signal": "normal oxygen"
+            },
+            "diagnosis_ground_truth": "viral_uri"
+          },
+          {
+            "event": "decision",
+            "at": "2026-09-07T11:59:17.563214",
+            "step": 0,
+            "action": "ACT",
+            "modality": null,
+            "score": 0.44,
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": null,
+              "final_diagnosis": null
+            }
+          },
+          {
+            "event": "final",
+            "at": "2026-09-07T11:59:17.563235",
+            "action": "ACT",
+            "diagnosis": "viral_uri",
+            "state": {
+              "encounter_id": "synthetic-005",
+              "now": "2025-01-01T08:30:00+00:00",
+              "visible_evidence": [
+                {
+                  "modality": "ehr",
+                  "content": {
+                    "demographics": {
+                      "age": 29,
+                      "sex": "F"
+                    },
+                    "chief_complaint": "mild sore throat",
+                    "vitals": {
+                      "temperature_c": 36.8,
+                      "heart_rate": 76,
+                      "spo2": 99
+                    },
+                    "clinical_signal": "normal oxygen"
+                  },
+                  "available_at": "2025-01-01T08:30:00+00:00",
+                  "provenance": "synthetic-initial-state",
+                  "confidence": 1.0
+                }
+              ],
+              "retrieved_modalities": [],
+              "uncertainty": 0.12,
+              "conflict": 0.0,
+              "risk": 0.2,
+              "hypothesis": "viral_uri",
+              "final_action": "ACT",
+              "final_diagnosis": "viral_uri"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

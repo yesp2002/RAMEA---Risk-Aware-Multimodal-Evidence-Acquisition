@@ -1,0 +1,14 @@
+{
+  "mode": "offline",
+  "aws_profile": "aidev",
+  "aws_region": "us-east-1",
+  "text_model_id": "openai.gpt-oss-120b-1:0",
+  "vision_model_id": "amazon.nova-lite-v1:0",
+  "embedding_model_id": "amazon.titan-embed-text-v2:0",
+  "max_steps": 4,
+  "stop_threshold": 0.55,
+  "alpha_conflict": 0.35,
+  "beta_risk": 0.45,
+  "lambda_cost": 0.10,
+  "confidence_threshold": 0.70
+}
