@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from pathlib import Path
 from typing import Any
 
@@ -20,24 +21,42 @@ class BedrockClient:
         self.client = session.client("bedrock-runtime")
 
     def converse(
-        self, prompt: str, model_id: str, image_path: str | None = None
+        self,
+        prompt: str,
+        model_id: str,
+        image_path: str | None = None,
+        image_bytes: bytes | None = None,
     ) -> dict[str, Any]:
         content: list[dict[str, Any]] = [{"text": prompt}]
-        if image_path:
-            image_bytes = Path(image_path).read_bytes()
+        if image_path or image_bytes:
+            payload = (
+                image_bytes
+                if image_bytes is not None
+                else Path(image_path).read_bytes()
+            )
             content.append(
                 {
                     "image": {
-                        "format": Path(image_path).suffix.lstrip("."),
-                        "source": {"bytes": image_bytes},
+                        "format": (
+                            "png"
+                            if image_bytes is not None
+                            else Path(image_path).suffix.lstrip(".")
+                        ),
+                        "source": {"bytes": payload},
                     }
                 }
             )
+        started = time.perf_counter()
         response = self.client.converse(
             modelId=model_id,
             messages=[{"role": "user", "content": content}],
-            inferenceConfig={"temperature": 0.0},
+            inferenceConfig={"temperature": 0.0, "maxTokens": 500},
         )
+        response["_ramea_telemetry"] = {
+            "latency_seconds": round(time.perf_counter() - started, 4),
+            "model_id": model_id,
+            "usage": response.get("usage", {}),
+        }
         return response
 
     def embed(self, text: str, model_id: str) -> list[float]:

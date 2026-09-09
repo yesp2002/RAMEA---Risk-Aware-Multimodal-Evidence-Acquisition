@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Offline-first prototype for risk-aware multimodal evidence acquisition"
 requires-python = ">=3.11"
 dependencies = [
-  "boto3>=1.35.0,<2.0.0",
+  "boto3==1.40.61",
 ]
 
 [project.scripts]

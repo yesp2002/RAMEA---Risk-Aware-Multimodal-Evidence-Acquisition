@@ -71,3 +71,7 @@ python3 -m scripts.evaluate_policies \
 ```
 
 The current three-case fixture is a wiring smoke test, not a meaningful benchmark. Equal accuracy and retrieval counts are expected until the fixture includes cases where additional modalities change the correct decision or where conflict requires escalation.
+
+## Results archive
+
+All evaluation JSON reports and human-readable interpretations are preserved under `results/`. New evaluator runs default to UTC date-stamped result filenames and should not overwrite prior runs. See `results/README.md` for the naming convention.

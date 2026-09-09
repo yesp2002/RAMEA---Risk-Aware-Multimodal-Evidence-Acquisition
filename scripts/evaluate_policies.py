@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 from src.agent import run_encounter
@@ -17,9 +18,14 @@ def main() -> None:
     parser.add_argument("--config", type=Path, default=Path("configs/prototype.json"))
     parser.add_argument("--max-steps", type=int, default=None)
     parser.add_argument(
-        "--output", type=Path, default=Path("artifacts/policy_comparison.json")
+        "--output",
+        type=Path,
+        default=None,
     )
     args = parser.parse_args()
+    if args.output is None:
+        stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H%M%SZ")
+        args.output = Path(f"results/{stamp}_offline_synthetic_evaluation.json")
     config = load_config(args.config)
     max_steps = args.max_steps or int(config.get("max_steps", 4))
     encounters = build_synthetic_encounters()

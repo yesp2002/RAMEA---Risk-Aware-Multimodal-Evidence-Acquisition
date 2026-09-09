@@ -136,3 +136,7 @@ Before treating the metrics as study results:
 ## Threshold interpretation
 
 See `EVALUATION_METRICS_AND_THRESHOLDS.md` for metric definitions, interpretation, prototype starting gates, MIMIC-stage guidance, and warnings against treating synthetic thresholds as clinical acceptance criteria.
+
+## Persistent results
+
+Evaluation outputs and their interpretations are archived under `results/`. The archive includes the offline synthetic run, the live Bedrock synthetic run, and the corresponding interpretation note. See `results/README.md` for versioning and future-run conventions.
